@@ -30,45 +30,18 @@ var gameBoard = new Board(squares, []);
 
 // instantiate a single piece, and in this example start it at index 41
 var red1 = new Piece("red", 41);
-
+var red2 = new Piece("red", 43);
 // example push piece to occupiedSquares
+
 gameBoard.occupiedSquares.push(red1);
+gameBoard.occupiedSquares.push(red2);
+
+// Piece.each(function(){
+//   gameBoard.occupiedSquares.push(this);
+// });
 
 // example move
 red1.currentPos = red1.currentPos - 7;
-
-// --------------------------------- Frontend LOGIC
-// --------------------------------- Frontend LOGIC
-// --------------------------------- Frontend LOGIC
-
-$(document).ready(function(){
-  var player1Name = $("").val();
-  var player2Name = $("").val();
-  var player1 = new Player(player1Name, 12);
-  var player2 = new Player(player2Name, 12);
-  
-
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -86,13 +59,46 @@ $(document).ready(function(){
 
 $(document).ready(function() {
 
+  var player1Name = $("").val();
+  var player2Name = $("").val();
+  var player1 = new Player(player1Name, 12);
+  var player2 = new Player(player2Name, 12);
+
+  // create new board html, it needs 64 squares
+  var makeBoard = function() {
+    for (var i = 0; i < 64; i++) {
+      $("#board").append("<div class='square' data-value='" + i + "'></div>");
+    }
+    $("#board").append("<div class='reset-button' onClick='window.location.reload()'>New Game</div>");
+  }
+  makeBoard();
 
 
+  // Create array for all squares to be colored
+  var coloredSquares = [1,3,5,7,8,10,12,14,17,19,21,23,24,26,28,30,33,35,37,39,40,42,44,46,49,51,53,55,56,58,60,62];
+  // loop through array and color each div
+  coloredSquares.forEach(function(coloredSquare){
+    $("[data-value='" + coloredSquare + "']").addClass("black");
+  });
 
+  gameBoard.occupiedSquares.forEach(function(occupiedSquare) {
+    var occupied = occupiedSquare.currentPos;
+    $("[data-value='" + occupied + "']").html("<div class='red piece'></div>");
+  });
+  // move
+  $(".piece").click(function() {
+    // var thisPiece = $(this).parent().attr('data-value');
+    
+    $(".square").click(function() {
+      var newValue = $(this).attr('data-value');
+      red1.currentPos = newValue;
 
-
-
-
+      gameBoard.occupiedSquares.forEach(function(occupiedSquare) {
+        var occupied = occupiedSquare.currentPos;
+        $("[data-value='" + occupied + "']").html("<div class='red piece'></div>");
+      });
+    });
+  });
 
 
 

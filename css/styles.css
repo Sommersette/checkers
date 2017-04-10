@@ -1,0 +1,24 @@
+#board {
+  width: 1000px;
+  height: 1000px;
+}
+
+.square{
+  /*background-color: #008000;*/
+  width: 11%;
+  height: 11%;
+  padding: 1px;
+  border: solid 1px black;
+  display: inline-block;
+  transition: all 0.5s;
+  margin-right: 1%;
+}
+.red {
+  background-color: red;
+  width: 20px;
+  height:20px;
+  border-radius: 50%;
+}
+.black{
+  background-color: black;
+}
