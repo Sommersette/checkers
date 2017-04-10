@@ -22,3 +22,6 @@
 .black{
   background-color: black;
 }
+.piece {
+  z-index: 10;
+}
