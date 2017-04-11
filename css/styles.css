@@ -22,3 +22,9 @@
 .black{
   background-color: black;
 }
+<<<<<<< HEAD
+=======
+.piece {
+  z-index: 10;
+}
+>>>>>>> team2
